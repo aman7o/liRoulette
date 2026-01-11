@@ -143,7 +143,7 @@ Fully verifiable on-chain. No external oracle.
 
 ## Demo
 
-**Video Demo**: Coming soon
+**Video Demo**: (https://youtu.be/UOG8OdHB3VY?si=HQCHbM271LslsODE)
 
 **Try Multiplayer Locally**:
 ```bash
