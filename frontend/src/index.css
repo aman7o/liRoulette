@@ -1,0 +1,578 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(145deg, #0A1F27 0%, #0F2832 50%, #1C3640 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Number cell hover effects */
+.number-cell {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.number-cell:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.number-cell.has-bet {
+  border: 2px solid #fbbf24;
+  box-shadow: inset 0 0 10px rgba(251, 191, 36, 0.3), 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+/* Red number gradient */
+.number-red {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+}
+
+/* Black number gradient */
+.number-black {
+  background: linear-gradient(135deg, #374151 0%, #111827 100%);
+}
+
+/* Green zero glow */
+.number-green {
+  background: linear-gradient(135deg, #16a34a 0%, #0a7536 100%);
+  box-shadow: 0 0 10px rgba(22, 163, 74, 0.3);
+}
+
+/* Outside bet hover */
+.outside-bet {
+  transition: all 0.2s ease;
+}
+
+.outside-bet:hover:not(:disabled) {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.outside-bet.has-bet {
+  border: 2px solid #fbbf24;
+  box-shadow: inset 0 0 8px rgba(251, 191, 36, 0.3), 0 0 8px rgba(251, 191, 36, 0.4);
+}
+
+/* Chip button hover */
+.chip-btn {
+  transition: all 0.15s ease;
+}
+
+.chip-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+}
+
+.chip-btn.chip-red:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+.chip-btn.chip-green:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+.chip-btn.chip-blue:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+.chip-btn.chip-purple:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(147, 51, 234, 0.6);
+}
+
+/* Confirm bet button hover */
+.confirm-btn {
+  transition: all 0.2s ease;
+}
+
+.confirm-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Card panels */
+.card-panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Balance glow */
+.balance-display {
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* Winner number animation */
+.winner-number {
+  animation: winnerPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.winner-number-idle {
+  animation: breatheGlow 2.5s ease-in-out infinite;
+}
+
+/* Profit display */
+.profit-positive {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+.profit-negative {
+  color: #f87171;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.5);
+}
+
+/* Mute button */
+.mute-btn {
+  transition: all 0.2s ease;
+}
+
+.mute-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Betting table felt */
+.betting-felt {
+  background: linear-gradient(135deg, #0d8a42 0%, #0a7536 50%, #085c2b 100%);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Wheel container shadow and glow */
+.wheel-container {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.wheel-rim-glow {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Bet indicator chip */
+.bet-indicator {
+  animation: scaleIn 0.2s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* History ball */
+.history-ball {
+  transition: all 0.2s ease;
+}
+
+.history-ball:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px currentColor;
+}
+
+/* Keyframe Animations */
+@keyframes winnerPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes breatheGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.4), 0 0 20px rgba(251, 191, 36, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.4);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Tailwind animation classes */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Gold glow shadow utility */
+.shadow-glow-gold {
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+}
+
+/* ========================================
+   PREMIUM CASINO DESIGN ENHANCEMENTS
+   ======================================== */
+
+/* Premium card glass effect */
+.card-glass {
+  background: rgba(15, 40, 50, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(141, 150, 255, 0.1);
+}
+
+/* Enhanced gold glow for buttons */
+.btn-gold-glow {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3),
+              0 4px 15px rgba(251, 191, 36, 0.2);
+}
+
+.btn-gold-glow:hover {
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.4),
+              0 6px 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Premium chip 3D effect */
+.chip-3d {
+  background-image: linear-gradient(145deg,
+    rgba(255,255,255,0.2) 0%,
+    transparent 50%,
+    rgba(0,0,0,0.2) 100%);
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.2),
+              inset 0 -2px 4px rgba(0,0,0,0.2),
+              0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Enhanced betting felt with texture */
+.betting-felt-premium {
+  background: linear-gradient(135deg, #0d8a42 0%, #0a7536 50%, #085c2b 100%);
+  box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 10px rgba(255, 255, 255, 0.05),
+              0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 3px solid #064e2a;
+  position: relative;
+}
+
+/* Subtle pattern overlay for felt texture */
+.betting-felt-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 8px 8px;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Premium button press effect */
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+/* Subtle text glow for headers */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* ========================================
+   PROFESSIONAL CASINO UI - REFERENCE MATCH
+   ======================================== */
+
+/* Wood grain table edge */
+.wood-edge {
+  background: linear-gradient(180deg,
+    #5c4033 0%,
+    #8b5a2b 20%,
+    #a0522d 40%,
+    #8b5a2b 60%,
+    #6b4423 80%,
+    #4a3728 100%
+  );
+  height: 40px;
+  border-radius: 0 0 16px 16px;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.wood-edge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    rgba(0,0,0,0.05) 2px,
+    transparent 4px
+  );
+  border-radius: inherit;
+}
+
+/* 3D Roulette Wheel */
+.wheel-3d-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.wheel-3d {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  background: conic-gradient(
+    from 0deg,
+    #16a34a 0deg 9.73deg,
+    #dc2626 9.73deg 19.46deg,
+    #1f2937 19.46deg 29.19deg,
+    #dc2626 29.19deg 38.92deg,
+    #1f2937 38.92deg 48.65deg,
+    #dc2626 48.65deg 58.38deg,
+    #1f2937 58.38deg 68.11deg,
+    #dc2626 68.11deg 77.84deg,
+    #1f2937 77.84deg 87.57deg,
+    #dc2626 87.57deg 97.3deg,
+    #1f2937 97.3deg 107.03deg,
+    #dc2626 107.03deg 116.76deg,
+    #1f2937 116.76deg 126.49deg,
+    #dc2626 126.49deg 136.22deg,
+    #1f2937 136.22deg 145.95deg,
+    #dc2626 145.95deg 155.68deg,
+    #1f2937 155.68deg 165.41deg,
+    #dc2626 165.41deg 175.14deg,
+    #1f2937 175.14deg 184.87deg,
+    #dc2626 184.87deg 194.6deg,
+    #1f2937 194.6deg 204.33deg,
+    #dc2626 204.33deg 214.06deg,
+    #1f2937 214.06deg 223.79deg,
+    #dc2626 223.79deg 233.52deg,
+    #1f2937 233.52deg 243.25deg,
+    #dc2626 243.25deg 252.98deg,
+    #1f2937 252.98deg 262.71deg,
+    #dc2626 262.71deg 272.44deg,
+    #1f2937 272.44deg 282.17deg,
+    #dc2626 282.17deg 291.9deg,
+    #1f2937 291.9deg 301.63deg,
+    #dc2626 301.63deg 311.36deg,
+    #1f2937 311.36deg 321.09deg,
+    #dc2626 321.09deg 330.82deg,
+    #1f2937 330.82deg 340.55deg,
+    #dc2626 340.55deg 350.28deg,
+    #1f2937 350.28deg 360deg
+  );
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 60px rgba(0, 0, 0, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.6);
+  border: 10px solid #8B4513;
+}
+
+.wheel-3d::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d1810 0%, #1a0f0a 100%);
+  border: 4px solid #8B4513;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.wheel-3d-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 50%, #8b7226 100%);
+  border: 3px solid #6b5a1e;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.wheel-3d-rim {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 12px solid;
+  border-color: #a0522d #8b4513 #6b4423 #8b4513;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Casino felt - darker green like reference */
+.betting-felt-casino {
+  background: linear-gradient(135deg, #0a5c34 0%, #074d2c 50%, #063d23 100%);
+  border: 2px solid #053a20;
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Stat box style matching reference */
+.stat-box {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 4px 10px;
+  text-align: center;
+  min-width: 55px;
+}
+
+.stat-box-value {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.stat-box-label {
+  font-size: 9px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Player name/balance boxes */
+.player-box {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+/* Chip black hover (for $100 chip) */
+.chip-btn.chip-black:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(55, 65, 81, 0.8);
+}
+
+/* ========================================
+   REALISTIC ROULETTE WHEEL STYLES
+   ======================================== */
+
+.roulette-wheel {
+  width: 380px;
+  height: 380px;
+  border-radius: 100%;
+  background: url(/assets/roulette_1.jpg);
+  background-size: 380px 380px;
+  margin: 0 auto;
+  box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  touch-action: none;
+  overflow: visible;
+}
+
+.roulette-wheel .layer-2,
+.roulette-wheel .layer-3,
+.roulette-wheel .layer-4,
+.roulette-wheel .layer-5,
+.roulette-wheel .ball-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 380px 380px;
+}
+
+.roulette-wheel .layer-2,
+.roulette-wheel .layer-4,
+.roulette-wheel .ball-container {
+  will-change: transform;
+}
+
+.roulette-wheel .layer-2 {
+  background-image: url(/assets/roulette_2.png);
+}
+
+.roulette-wheel .layer-3 {
+  background-image: url(/assets/roulette_3.png);
+}
+
+.roulette-wheel .layer-4 {
+  background-image: url(/assets/roulette_4.png);
+}
+
+.roulette-wheel .layer-5 {
+  background-image: url(/assets/roulette_5.png);
+}
+
+.roulette-wheel .ball {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background: #fff radial-gradient(circle at 5px 5px, #fff, #444);
+  box-shadow: 1px 1px 4px #000;
+  transform: translateY(-116px);
+  top: 50%;
+  left: 50%;
+  margin: -7px;
+  will-change: transform;
+}
+
+/* Wheel container for centering */
+.wheel-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* History bar styling for green felt theme */
+.history-ball-green {
+  background: linear-gradient(135deg, #16a34a 0%, #0a7536 100%);
+}
+
+.history-ball-red {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+}
+
+.history-ball-black {
+  background: linear-gradient(135deg, #374151 0%, #111827 100%);
+}

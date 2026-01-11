@@ -1,0 +1,28 @@
+[package]
+name = "linera-roulette"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+linera-sdk = "=0.15.7"
+async-graphql = { version = "=7.0.17", default-features = false }
+async-graphql-value = "=7.0.17"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+sha2 = "0.10"
+
+[[bin]]
+name = "linera_roulette_contract"
+path = "src/contract.rs"
+
+[[bin]]
+name = "linera_roulette_service"
+path = "src/service.rs"
+
+[profile.release]
+debug = false
+lto = true
+opt-level = "z"
+strip = "debuginfo"
+codegen-units = 1    # Better optimization for smaller binary
+panic = "abort"      # Smaller panic handler

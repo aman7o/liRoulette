@@ -1,0 +1,47 @@
+version: '3.8'
+
+# Multiplayer Testing Setup
+# - Run ./run.bash first to start Linera network
+# - Then run: docker-compose up
+# - Access players at: http://localhost:5173, :5174
+
+services:
+  # Player 1 Frontend
+  player1:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_NODE_URL=http://host.docker.internal:8080
+      - VITE_FAUCET_URL=http://host.docker.internal:8079
+      - VITE_APP_ID=${APP_ID:-}
+      - VITE_DEFAULT_CHAIN=${DEFAULT_CHAIN:-}
+      - VITE_HOST_CHAIN=${HOST_CHAIN:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - linera-network
+
+  # Player 2 Frontend
+  player2:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile
+    ports:
+      - "5174:5173"
+    environment:
+      - VITE_NODE_URL=http://host.docker.internal:8080
+      - VITE_FAUCET_URL=http://host.docker.internal:8079
+      - VITE_APP_ID=${APP_ID:-}
+      - VITE_DEFAULT_CHAIN=${DEFAULT_CHAIN:-}
+      - VITE_HOST_CHAIN=${HOST_CHAIN:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - linera-network
+
+networks:
+  linera-network:
+    driver: bridge

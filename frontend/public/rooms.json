@@ -1,0 +1,7 @@
+{
+  "rooms": [
+    {"id": 1, "name": "Room 1 - Beginner's Table", "chainId": "70973470ab67299f8d91bb755dae9d21072eefee61a354307da7011c2eb1ecb8"}
+    ,{"id": 2, "name": "Room 2 - High Rollers", "chainId": "9aa61766d670f45b543c9c9ebf8651e3a8f708b53d571188270cda19a68810e7"}
+    ,{"id": 3, "name": "Room 3 - VIP Lounge", "chainId": "e073c79007feeada00a4b1c23f2e3eb0f8eead3fcadd9a983363ac860e67455e"}
+  ]
+}
