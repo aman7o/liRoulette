@@ -19,7 +19,7 @@ A real-time multiplayer European Roulette game built on Linera's microchain arch
 
 ## Screenshots
 
-| Solo Mode | Multiplayer join | Mode Selection |
+| Multiplayer join | Solo Mode | Mode Selection |
 |----------------|------------------|------------------|
 | ![Modes](screenshots/screenshot-modes.png) | ![Host](screenshots/screenshot-host.png) | ![Multiplayer](screenshots/screenshot-multiplayer\.png) |
 
