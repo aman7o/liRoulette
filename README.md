@@ -2,7 +2,7 @@
 
 A real-time multiplayer European Roulette game built on Linera's microchain architecture with cross-chain messaging.
 
-![Game Screenshot](screenshots/screenshot-game.png)
+![Game Screenshot](screenshots/screenshot.-game.png)
 
 ---
 
@@ -21,7 +21,7 @@ A real-time multiplayer European Roulette game built on Linera's microchain arch
 
 | Mode Selection | Multiplayer Host | Multiplayer Join |
 |----------------|------------------|------------------|
-| ![Modes](screenshots/screenshot-modes.png) | ![Host](screenshots/screenshot-host.png) | ![Multiplayer](screenshots/screenshot-multiplayer.png) |
+| ![Modes](screenshots/screenshot-modes.png) | ![Host](screenshots/screenshot-host.png) | ![Multiplayer](screenshots/screenshot-multiplayer\.png) |
 
 ---
 
